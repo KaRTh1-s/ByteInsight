@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.login-body{
+  height: 100%;
+  background:  whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login-body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+}
+
+.login-content {
+  background: white;
+  padding: 40px 32px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(68,193,213,0.13);
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+  border: 2.5px solid #8497b3;
+  transition: all 0.3s ease;
+}
+
+.login-h {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.785);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 2px solid #e3f2fd;
+  margin-bottom: 15px;
+  font-size: 16px;
+  background: #f8fbff;
+  box-shadow: 0 2px 8px rgba(130,180,255,.13);
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.login-form input:focus {
+  border-color: #35cda6;
+  box-shadow: 0 0 8px rgba(53,205,166,.13);
+  outline: none;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 17px;
+  font-weight: 700;
+  background:#35cda6;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(62,183,236,.12);
+  transition: background 0.18s;
+}
+
+.login-btn:hover {
+  background: #5e9efb;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+a {
+  color: #58b4ff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.message {
+  color: red;
+  font-size: 14px;
+  margin: 8px 0 25px 0;
+  display: block;
+}
+
+.to-reg{
+  color: rgb(24, 55, 232);
+}
+
+@media (max-width: 480px) {
+  .login-content {
+    padding: 30px 20px;
+    border-radius: 16px;
+    max-width: 90%;
+  }
+
+  .login-h {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .login-form input {
+    padding: 12px 10px;
+    font-size: 15px;
+  }
+
+  .login-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .message {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-content {
+    padding: 35px 25px;
+    max-width: 80%;
+  }
+
+  .login-h {
+    font-size: 28px;
+  }
+}

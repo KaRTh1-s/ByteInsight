@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.nut-body {
+  min-height: 100vh;
+  width: 100vw;
+  background: #f5f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 6vw;
+  overflow-x: hidden;
+}
+
+.nut-title {
+  color: #2953a7;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.nut-input {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.nut-input input[type="text"] {
+  flex: 1;
+  max-width: 240px;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid #86bde8;
+  background: #f8faff;
+  font-size: 1rem;
+  color: #23416a;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.nut-input input[type="text"]:focus {
+  border: 1.2px solid #2953a7;
+  outline: none;
+  box-shadow: 0 0 5px rgba(41, 83, 167, 0.3);
+}
+
+.nut-input button {
+  background: #2953a7;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.nut-input button:hover {
+  background: #4576d6;
+}
+
+.nut-load {
+  color: #2953a7;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.nut-error {
+  color: #c0392b;
+  background: #fff2f2cc;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.nut-result {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.nut-card {
+  background: linear-gradient(145deg, #ffffff, #f0f8ff);
+  padding: 1rem 1.2rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.nut-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.nut-card h2 {
+  font-size: 1.2rem;
+  color: #2953a7;
+  margin-bottom: 0.3rem;
+}
+
+.nut-card p {
+  margin: 0.1rem 0;
+  font-size: 0.95rem;
+}
+
+.nut-card strong {
+  color: #4576d6;
+  font-weight: 500;
+}
+
+.nut-card p.high {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.nut-card p.low {
+  color: #27ae60; 
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .nut-result {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .nut-result {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .nut-input input[type="text"] {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nut-body {
+    padding-top: 3rem;
+  }
+  .nut-result {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.6rem;
+  }
+  .nut-input input[type="text"] {
+    max-width: 100px;
+  }
+  .nut-card {
+    padding: 0.8rem 0.9rem;
+  }
+  .nut-card h2 {
+    font-size: 1rem;
+  }
+  .nut-card p {
+    font-size: 0.85rem;
+  }
+}
