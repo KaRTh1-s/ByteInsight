@@ -1,0 +1,184 @@
+.planner-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.planner-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.08));
+  border-left: 4px solid var(--brand-primary);
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.planner-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 0.35rem;
+}
+
+.planner-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 750px;
+  margin-top: 0.25rem;
+}
+
+.planner-cta-group {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+/* Days Strip */
+.days-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.days-buttons-row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.day-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 68px;
+}
+
+.day-tab-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.day-tab-btn.active {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
+  color: #ffffff;
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 12px var(--brand-glow);
+}
+
+.day-name-abbr {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.day-number-label {
+  font-size: 0.725rem;
+  opacity: 0.85;
+}
+
+.day-stats-pill {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.day-stats-pill strong {
+  color: var(--text-primary);
+}
+
+/* Meals Grid */
+.day-meals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .day-meals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meal-plan-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.meal-plan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.meal-type-pill {
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.plan-item-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.plan-cal-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--bg-card-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.plan-item-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  flex: 1;
+}
+
+.plan-item-macros {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.plan-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.item-cost-text {
+  font-size: 0.875rem;
+  color: var(--brand-primary);
+  font-weight: 600;
+}

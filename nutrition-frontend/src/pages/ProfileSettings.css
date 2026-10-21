@@ -1,0 +1,184 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-header {
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.08));
+  border-left: 4px solid var(--brand-primary);
+}
+
+.profile-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 0.35rem;
+}
+
+.profile-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 750px;
+  margin-top: 0.25rem;
+}
+
+.profile-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .profile-form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-hint-text {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.allergens-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.allergen-toggle-btn {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.allergen-toggle-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.allergen-toggle-btn.active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+}
+
+/* Targets Column */
+.targets-summary-card {
+  padding: 1.75rem;
+  background: linear-gradient(145deg, var(--bg-card), rgba(16, 185, 129, 0.05));
+  border-left: 4px solid var(--brand-primary);
+}
+
+.targets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.cal-target-display-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.cal-target-title {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+
+.cal-target-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.1;
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.cal-target-unit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.macro-targets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.macro-target-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card-subtle);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+
+.m-name {
+  color: var(--text-secondary);
+}
+
+.m-val {
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+.formula-explanation-box {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formula-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.formula-explanation-box p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Layers, ArrowRight } from "lucide-react";
+import { foodService } from "../services/api";
 import "./Nutrition.css";
 
 function Nutrition() {
@@ -18,15 +21,7 @@ function Nutrition() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8080/api/nutrition", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
-
-      if (!res.ok) throw new Error("Failed to fetch data from backend");
-
-      const result = await res.json();
+      const result = await foodService.queryNutrition(query);
 
       if (Array.isArray(result) && result.length > 0) {
         setData(result);
@@ -48,41 +43,56 @@ function Nutrition() {
 
   return (
     <div className="nut-body">
-        <h1 className="nut-title">BiteInsight</h1>
+      <div className="nut-header-wrap">
+        <h1 className="nut-title">ByteInsight Food Lookup</h1>
+        <p className="nut-sub">Quick single-item nutrient query. For multi-ingredient meals and balance scores, use Food Analyzer.</p>
+        <Link to="/analyzer" className="btn-primary btn-sm mt-2">
+          <Layers size={16} /> Open Complete Food Analyzer <ArrowRight size={15} />
+        </Link>
+      </div>
 
+      <div className="nut-input-card card">
         <div className="nut-input">
           <input
             type="text"
-            placeholder="Enter food item(s)"
+            placeholder="Enter food item(s) e.g. Apple, Salmon, 100g Chicken..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyPress={handleKeyPress}
           />
-          <button onClick={fetchNutrition}>Search</button>
+          <button className="btn-primary" onClick={fetchNutrition}>Search</button>
         </div>
-
-        {loading && <p className="nut-load">Loading...</p>}
-        {error && <p className="nut-error">{error}</p>}
-
-        {data.length > 0 && (
-          <div className="nut-result">
-            {data.map((item, index) => (
-              <div className="nut-card" key={index}>
-              <h2>{item.name}</h2>
-              <p><strong>Calories:</strong> {item.calories} kcal</p>
-              <p className={item.protein_g < 5 ? "high" : ""}><strong>Protein:</strong> {item.protein_g} g</p>
-              <p className={item.fat_total_g > 10 ? "high" : ""}><strong>Fat:</strong> {item.fat_total_g} g</p>
-              <p className={item.carbohydrates_total_g > 50 ? "high" : ""}><strong>Carbohydrates:</strong> {item.carbohydrates_total_g} g</p>
-              <p className={item.sugar_g > 20 ? "high" : ""}><strong>Sugar:</strong> {item.sugar_g} g</p>
-              <p><strong>Cholesterol:</strong> {item.cholesterol_mg} mg</p>
-              <p><strong>Sodium:</strong> {item.sodium_mg} mg</p>
-              <p><strong>Potassium:</strong> {item.potassium_mg} mg</p>
-              <p className={item.fiber_g < 3 ? "low" : ""}><strong>Fiber:</strong> {item.fiber_g} g</p>
-          </div>
-            ))}
-          </div>
-        )}
       </div>
+
+      {loading && <p className="nut-load">Querying nutrition data...</p>}
+      {error && <p className="nut-error">{error}</p>}
+
+      {data.length > 0 && (
+        <div className="nut-result">
+          {data.map((item, index) => (
+            <div className="card nut-card" key={index}>
+              <div className="nut-card-header">
+                <h2>{item.name}</h2>
+                <span className="badge badge-verified">{item.source || "CALORIE_NINJAS"}</span>
+              </div>
+              <p className="nut-cal-row"><strong>Calories:</strong> {item.calories} kcal</p>
+              <div className="nut-macros-grid">
+                <div className="nut-pill"><span className="p-tag">Protein:</span> <strong>{item.protein_g} g</strong></div>
+                <div className="nut-pill"><span className="f-tag">Total Fat:</span> <strong>{item.fat_total_g} g</strong></div>
+                <div className="nut-pill"><span className="c-tag">Carbs:</span> <strong>{item.carbohydrates_total_g} g</strong></div>
+                <div className="nut-pill"><span className="fib-tag">Fiber:</span> <strong>{item.fiber_g} g</strong></div>
+              </div>
+              <div className="nut-micros-list">
+                <p><strong>Sugar:</strong> {item.sugar_g} g</p>
+                <p><strong>Sodium:</strong> {item.sodium_mg} mg</p>
+                <p><strong>Potassium:</strong> {item.potassium_mg} mg</p>
+                <p><strong>Cholesterol:</strong> {item.cholesterol_mg} mg</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 

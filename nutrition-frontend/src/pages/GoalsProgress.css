@@ -1,0 +1,156 @@
+.goals-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.goals-header {
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.08));
+  border-left: 4px solid var(--brand-primary);
+}
+
+.goals-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 0.35rem;
+}
+
+.goals-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 750px;
+  margin-top: 0.25rem;
+}
+
+.goals-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 850px) {
+  .goals-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.goal-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+
+.g-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.g-label {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.g-main-val {
+  font-size: 1.65rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  text-transform: capitalize;
+}
+
+.g-sub-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Macro Trend Card */
+.macro-trend-card {
+  padding: 1.75rem;
+}
+
+.intake-history-table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.intake-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.intake-history-table th, .intake-history-table td {
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.intake-history-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* Weight Progression */
+.weight-progression-card {
+  padding: 1.75rem;
+}
+
+.weight-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.weight-chips-row {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.weight-entry-chip {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.w-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.w-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.w-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.empty-weight-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  gap: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,235 @@
+.budget-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.budget-header {
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, var(--bg-card), rgba(16, 185, 129, 0.08));
+  border-left: 4px solid var(--brand-primary);
+}
+
+.budget-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 0.35rem;
+}
+
+.budget-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 750px;
+  margin-top: 0.25rem;
+}
+
+/* Metrics Grid */
+.budget-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 850px) {
+  .budget-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.budget-metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem;
+}
+
+.b-tag {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.b-val {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+}
+
+.b-sub {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Cost Efficiency Card */
+.cost-efficiency-card {
+  padding: 1.75rem;
+}
+
+.efficiency-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1050px) {
+  .efficiency-chips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .efficiency-chips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eff-chip {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.eff-food {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.eff-stat {
+  font-size: 0.825rem;
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+.eff-desc {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* Shopping List Layout */
+.shopping-list-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 950px) {
+  .shopping-list-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.add-grocery-card {
+  padding: 1.5rem;
+}
+
+.add-grocery-form {
+  margin-top: 1.25rem;
+}
+
+.grocery-items-card {
+  padding: 1.5rem;
+}
+
+.grocery-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.85rem;
+}
+
+.grocery-items-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.grocery-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  transition: all var(--transition-fast);
+}
+
+.grocery-row.purchased-done {
+  opacity: 0.55;
+  background-color: var(--bg-surface);
+}
+
+.grocery-row.purchased-done .grocery-name {
+  text-decoration: line-through;
+}
+
+.grocery-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--brand-primary);
+}
+
+.grocery-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.grocery-name {
+  font-weight: 600;
+  font-size: 0.925rem;
+}
+
+.grocery-meta {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+}
+
+.grocery-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.grocery-price {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--brand-primary);
+}
+
+.empty-grocery-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+.empty-bag-icon {
+  color: var(--brand-primary);
+  opacity: 0.5;
+}

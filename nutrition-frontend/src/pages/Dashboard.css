@@ -1,0 +1,646 @@
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.dashboard-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+  gap: 1.25rem;
+}
+
+.spinner-glow {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  border-top-color: var(--brand-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Header Row */
+.dashboard-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dash-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.dash-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+.dash-date-picker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+}
+
+.date-icon {
+  color: var(--brand-primary);
+}
+
+.dash-date-input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.925rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Metrics Grid */
+.metrics-summary-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 1200px) {
+  .metrics-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .metrics-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calorie-metric-card {
+  background: linear-gradient(145deg, var(--bg-card), rgba(16, 185, 129, 0.05));
+  border-left: 4px solid var(--brand-primary);
+}
+
+.macro-metric-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.metric-tag {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.macro-icon {
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+}
+
+.energy-icon {
+  color: var(--macro-protein);
+  background: var(--macro-protein-bg);
+}
+
+.protein-icon {
+  color: var(--macro-protein);
+  background: var(--macro-protein-bg);
+}
+
+.carbs-icon {
+  color: var(--macro-carbs);
+  background: var(--macro-carbs-bg);
+}
+
+.fat-icon {
+  color: var(--macro-fat);
+  background: var(--macro-fat-bg);
+}
+
+.calorie-display-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.calorie-main-number {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.big-cal-val {
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.cal-unit {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.calorie-subtext {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+}
+
+.macro-numbers {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.macro-curr-val {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+.macro-target-val {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-card-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.energy-fill { background: linear-gradient(90deg, #10b981, #059669); }
+.protein-fill { background: linear-gradient(90deg, #f97316, #ea580c); }
+.carbs-fill { background: linear-gradient(90deg, #0ea5e9, #0284c7); }
+.fat-fill { background: linear-gradient(90deg, #f59e0b, #d97706); }
+
+.card-footer-metric {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+}
+
+.text-success { color: var(--brand-primary); }
+.text-warning { color: var(--macro-protein); }
+.text-danger { color: var(--macro-sodium); }
+
+/* Insights and Balance Score Row */
+.insights-and-score-row {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .insights-and-score-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.balance-score-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.section-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.section-card-sub {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.balance-gauge-area {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background-color: var(--bg-card-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+}
+
+.balance-score-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 5px solid var(--brand-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  box-shadow: 0 0 16px var(--brand-glow);
+  flex-shrink: 0;
+}
+
+.score-number {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+}
+
+.score-denom {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.rating-badge-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.rating-desc-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+.micro-progress-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+}
+
+@media (max-width: 600px) {
+  .micro-progress-chips {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.micro-chip {
+  background-color: var(--bg-card-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.chip-name {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.chip-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Insights Card */
+.insights-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.flex-center-gap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sparkle-icon {
+  color: #8b5cf6;
+}
+
+.insights-count-pill {
+  font-size: 0.75rem;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.insights-stream-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: 290px;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+}
+
+.insight-alert-item {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border-left: 3px solid;
+}
+
+.alert-type-success {
+  background: rgba(16, 185, 129, 0.08);
+  border-left-color: var(--brand-primary);
+}
+
+.alert-type-warning {
+  background: rgba(249, 115, 22, 0.08);
+  border-left-color: var(--macro-protein);
+}
+
+.alert-type-tip {
+  background: rgba(14, 165, 233, 0.08);
+  border-left-color: var(--macro-carbs);
+}
+
+.alert-type-info {
+  background: var(--bg-card-subtle);
+  border-left-color: var(--text-muted);
+}
+
+.alert-title-text {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.alert-body-text {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.alert-suggestion-text {
+  font-size: 0.8rem;
+  color: var(--brand-primary);
+  margin-top: 0.35rem;
+}
+
+.empty-insights-box {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* 7-Day Trend Chart Card */
+.trend-chart-card {
+  margin-bottom: 0.5rem;
+}
+
+.trend-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.trend-bars-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  align-items: flex-end;
+  height: 180px;
+  padding-top: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+}
+
+.trend-bar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.trend-bar-track {
+  flex: 1;
+  width: 100%;
+  max-width: 42px;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--bg-card-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.trend-bar-bar {
+  width: 100%;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height 0.5s ease;
+  cursor: pointer;
+}
+
+.bar-normal {
+  background: linear-gradient(180deg, #0ea5e9, #0284c7);
+}
+
+.bar-target-met {
+  background: linear-gradient(180deg, #10b981, #059669);
+  box-shadow: 0 0 10px var(--brand-glow);
+}
+
+.trend-day-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.trend-cal-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+/* Logged Meals Section */
+.meals-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.section-sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.meal-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .meal-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .meal-categories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meal-category-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  min-height: 230px;
+}
+
+.meal-cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.meal-cat-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.meal-cat-stats {
+  font-size: 0.775rem;
+  color: var(--brand-primary);
+  font-weight: 500;
+}
+
+.quick-add-icon-btn {
+  background: none;
+  border: none;
+  color: var(--brand-primary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.quick-add-icon-btn:hover {
+  transform: scale(1.15);
+}
+
+.meal-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.meal-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card-subtle);
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.meal-item-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.item-name-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-portion-label {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+}
+
+.item-delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.item-delete-btn:hover {
+  color: var(--macro-sodium);
+}
+
+.empty-meal-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  gap: 0.65rem;
+  color: var(--text-muted);
+  font-size: 0.825rem;
+  padding: 1rem 0;
+}

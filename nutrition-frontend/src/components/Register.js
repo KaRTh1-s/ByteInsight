@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Flame, ArrowRight, Lock, User as UserIcon, Mail } from "lucide-react";
+import { authService } from "../services/api";
 import "./Register.css";
 
 function Register() {
@@ -9,6 +10,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [strength, setStrength] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,41 +36,127 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!username || !password || !email) {
+
+    if (!username.trim() || !password || !email.trim()) {
       setMessage("All fields are required.");
       return;
     }
+
+    if (username.trim().length < 3) {
+      setMessage("Username must be at least 3 characters.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setMessage("Password must be at least 6 characters.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/register", {
-        username,
-        email,
-        password,
-      });
-      setMessage(res.data);
-      navigate("/Nutrition");
+      await authService.register(username.trim(), email.trim(), password);
+      navigate("/dashboard");
     } catch (err) {
-      if (err.response) setMessage(err.response.data);
-      else setMessage("Error registering user.");
+      if (err.response && err.response.data) {
+        setMessage(typeof err.response.data === "string" ? err.response.data : "Registration error.");
+      } else {
+        setMessage("Unable to register user. Ensure backend server is reachable.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="reg-body">
-      <div className="reg-content">
-        <h2 className="reg-h">Register</h2>
-        <form onSubmit={handleRegister} className="reg-form">
-          <input type="text" placeholder="Username" value={username} onChange={(e) => setUserName(e.target.value)}/> <br />
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/><br />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value);checkStrength(e.target.value);}}/><br />
-          {strength && (
-            <p style={{color:strength === "Strong"? "green": strength === "Medium"? "orange": "red",}}>
-                Password strength: {strength}
-            </p>
-          )}
-          <button type="submit" className="reg-btn">Register</button>
+    <div className="reg-root">
+      <div className="reg-panel card">
+        <div className="auth-brand-badge">
+          <div className="brand-logo-ring">
+            <Flame size={24} className="brand-icon" />
+          </div>
+          <h1 className="auth-brand-name">
+            Byte<span className="brand-title-accent">Insight</span>
+          </h1>
+          <p className="auth-tagline">Personalized Nutrition Intelligence Platform</p>
+        </div>
+
+        <h2 className="reg-title">Create Account</h2>
+        <p className="reg-subtitle">Start personalizing your nutrition and tracking dietary balance</p>
+
+        {message && (
+          <div className="alert-banner alert-error mb-3">
+            {message}
+          </div>
+        )}
+
+        <form onSubmit={handleRegister} className="auth-form">
+          <div className="form-group">
+            <label className="form-label">Username</label>
+            <div className="input-with-icon">
+              <UserIcon size={17} className="input-prefix-icon" />
+              <input
+                type="text"
+                placeholder="Choose a username"
+                className="form-input"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Email Address</label>
+            <div className="input-with-icon">
+              <Mail size={17} className="input-prefix-icon" />
+              <input
+                type="email"
+                placeholder="name@example.com"
+                className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Password</label>
+            <div className="input-with-icon">
+              <Lock size={17} className="input-prefix-icon" />
+              <input
+                type="password"
+                placeholder="Create secure password"
+                className="form-input"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  checkStrength(e.target.value);
+                }}
+                required
+              />
+            </div>
+            {strength && (
+              <div className="strength-meter-row">
+                <span className="strength-label">Password strength:</span>
+                <span className={`strength-badge strength-${strength.toLowerCase()}`}>
+                  {strength}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <button type="submit" className="btn-primary btn-block" disabled={loading}>
+            {loading ? "Creating Account..." : "Register & Get Started"} <ArrowRight size={16} />
+          </button>
         </form>
-        <p className="reg-mes">{message}</p>
-        <p>Already a user? <Link to="/login"  className="to-log">Login here</Link></p>
+
+        <div className="auth-footer-text">
+          <span>Already have an account? </span>
+          <Link to="/login" className="auth-action-link">Sign In</Link>
+        </div>
       </div>
     </div>
   );
